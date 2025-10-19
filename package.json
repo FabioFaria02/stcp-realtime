@@ -1,0 +1,14 @@
+{
+  "name": "stcp-realtime-proxy",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "STCP proxy horário tempo real",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
+  }
+}
