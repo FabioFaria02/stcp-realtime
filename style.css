@@ -1,0 +1,435 @@
+/* Variáveis para Dark/Light Mode */
+:root {
+    --primary-color: #e73324; /* Vermelho STCP */
+    --secondary-color: #007bff;
+    --text-light: #fefefe;
+    --text-dark: #2c3e50;
+    --bg-light: #f4f7f6;
+    --bg-dark: #2c3e50;
+    --card-light: #ffffff;
+    --card-dark: #3a4e60;
+    --border-light: #ddd;
+    --border-dark: #555;
+    --status-on-time: #2ecc71; /* Verde */
+    --status-delayed: #f39c12; /* Laranja */
+}
+
+/* Base e Light Mode */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.dark-mode header,
+.dark-mode .card,
+.dark-mode .modal-content {
+    background-color: var(--card-dark);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+header {
+    background-color: var(--card-light);
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Títulos do Cabeçalho */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px; 
+}
+
+.stop-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden; /* Garantir que nomes longos não ultrapassem */
+}
+
+.stop-title h1 {
+    font-size: 1.6em; 
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 1.2; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.stop-title #paragem-codigo {
+    font-size: 0.9em; 
+    color: #888; 
+    margin: 0;
+    line-height: 1;
+}
+
+.dark-mode .stop-title #paragem-codigo {
+    color: #bbb;
+}
+
+/* Ícones do Cabeçalho */
+.header-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.3em;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s, opacity 0.2s;
+}
+
+.dark-mode .icon-btn {
+    color: var(--text-light);
+}
+
+/* Estilo para o botão de Favorito (Estrela) */
+#favorite-toggle.favorite-on .fa-star {
+    color: gold; 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+#favorite-toggle.favorite-off .fa-star {
+    color: #888; 
+}
+.dark-mode #favorite-toggle.favorite-off .fa-star {
+    color: #bbb;
+}
+
+/* Nova secção de Controlo (Pesquisa e Favoritos) */
+.header-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Botões base */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s, opacity 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    width: 100%;
+    justify-content: center;
+}
+
+.primary-btn:hover {
+    opacity: 0.9;
+}
+
+.secondary-btn {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.dark-mode .secondary-btn {
+    border: 1px solid var(--text-light);
+    color: var(--text-light);
+}
+
+.large-btn {
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+* Correção da cor do botão de pesquisa */
+.search-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Botão redondo */
+    padding: 0;
+    background-color: var(--primary-color); /* Cor do tema (Vermelho) */
+    color: var(--text-light);
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.search-btn:hover {
+    opacity: 0.8;
+    background-color: var(--primary-color); /* Mantém a cor no hover */
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#last-update {
+    font-size: 0.85em;
+    color: #888;
+}
+
+.dark-mode #last-update {
+    color: #bbb;
+}
+
+/* Lista de Chegadas (Design de Card) */
+#result {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card {
+    background-color: var(--card-light);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid var(--primary-color);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.route-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.route-info .line {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.route-info .destination {
+    font-size: 0.9em;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dark-mode .route-info .destination {
+    color: #bbb;
+}
+
+.time-info {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.time-info .time {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-dark);
+    display: block;
+}
+
+.dark-mode .time-info .time {
+    color: var(--text-light);
+}
+
+.time-info .unit {
+    font-size: 0.8em;
+    display: block;
+    color: #888;
+}
+
+.dark-mode .time-info .unit {
+    color: #bbb;
+}
+
+.status {
+    margin-left: 15px;
+    font-weight: bold;
+    color: var(--status-on-time);
+    font-size: 1.2em;
+    flex-shrink: 0;
+}
+.status.status-delayed {
+    color: var(--status-delayed);
+}
+
+/* Mensagens de Estado */
+#loading-indicator, #error-message, #no-buses-message {
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+#error-message {
+    color: #e74c3c; /* Vermelho erro */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Modal (para seletor de paragens e pesquisa) */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 100;
+    padding-top: 5vh;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: var(--card-light);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.dark-mode #search-input {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    border-color: var(--border-dark);
+}
+
+/* Estilo para a lista de botões no modal */
+.stop-selector-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
+    max-height: 50vh; /* Limitar altura para ser scrollable */
+    overflow-y: auto; /* Adicionar scroll se necessário */
+    padding-right: 5px;
+}
+
+.selector-btn {
+    background-color: var(--card-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border-light);
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.2s;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selector-btn:hover {
+    background-color: #eee;
+    border-color: var(--primary-color);
+}
+
+/* Destaque para a paragem atual */
+.selector-btn.current-stop {
+    border: 2px solid var(--primary-color);
+    font-weight: bold;
+    background-color: #ffe8e8; 
+}
+
+.dark-mode .selector-btn {
+    background-color: var(--card-dark);
+    color: var(--text-light);
+    border-color: var(--border-dark);
+}
+
+.dark-mode .selector-btn:hover {
+    background-color: #444;
+}
+
+.dark-mode .selector-btn.current-stop {
+    background-color: #553333; 
+    border: 2px solid var(--primary-color);
+}
+
+.stop-code-modal {
+    color: var(--primary-color);
+    font-weight: normal;
+    background-color: rgba(231, 51, 36, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em; 
+    margin-left: 5px;
+}
+
+.modal-info {
+    font-size: 0.8em;
+    color: #888;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Otimização para Telemóvel */
+@media (max-width: 400px) {
+    .header-content {
+        align-items: center; /* Alinhar novamente ao centro no topo */
+    }
+    .header-controls {
+        flex-direction: row; 
+    }
+    .stop-selector-list {
+        max-height: 60vh; 
+    }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STCP – Chegadas em Tempo Real</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="manifest" href="/manifest.webmanifest">
+</head>
+<body class="light-mode">
+    <header>
+        <div class="header-content">
+            <div class="stop-title">
+                <h1 id="paragem-nome"></h1> 
+                <p id="paragem-codigo"></p>
+            </div>
+            <div class="header-icons">
+                <button id="favorite-toggle" class="icon-btn favorite-off" aria-label="Marcar como Favorita">
+                    <i class="far fa-star"></i>
+                </button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Alternar Modo Claro/Escuro">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="header-controls">
+            <button id="favorites-selector" class="btn primary-btn large-btn">
+                <i class="fas fa-star"></i> Paragens Favoritas
+            </button>
+            <button id="search-toggle" class="btn search-btn" aria-label="Pesquisar Paragens">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="controls">
+            <button onclick="carregar()" class="btn secondary-btn">
+                <i class="fas fa-sync-alt"></i> Atualizar
+            </button>
+            <span id="last-update">Última atualização: --:--</span>
+        </div>
+
+        <div id="loading-indicator">A carregar horários...</div>
+        <div id="error-message" class="hidden">Erro ao buscar dados. Tente novamente.</div>
+        
+        <div id="result">
+            </div>
+
+        <p id="no-buses-message" class="hidden">Não há autocarros próximos para esta paragem.</p>
+    </main>
+
+    <div id="modal-paragens" class="modal hidden">
+        <div class="modal-content">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
